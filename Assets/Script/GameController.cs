@@ -29,14 +29,13 @@ public class GameController : MonoBehaviour
     }
     void Start()
     {
-        id = DataGame.GetCar();
+        /*id = DataGame.GetCar();
         Debug.Log($"/Vehicle/Car {id}");
         var car = Instantiate(Resources.Load<GameObject>($"Vehicle/Car {id}"));
         MyCar = car;
-        MyCar.gameObject.AddComponent<NetworkObject>();
-        MyCar.gameObject.AddComponent<NetworkTransform>();
+    
         car.transform.position = PosFirstCar.position;
-        MyCamera.Instance.SetTarGet(car);
+        MyCamera.Instance.SetTarGet(car);*/
         Coin = DataGame.GetCoin();
         Gen = DataGame.GetGem();
 

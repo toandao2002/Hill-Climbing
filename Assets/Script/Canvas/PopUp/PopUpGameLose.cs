@@ -39,7 +39,8 @@ public class PopUpGameLose : BasePopUp
 
         Coin_txt.text ="+"+ (GameController.instance.Coin - DataGame.GetCoin()).ToString()+ " COINS";
         Gem_txt .text ="+"+ (GameController.instance.Gen - DataGame.GetGem()).ToString()+ " GEMS";
-        Distance.text = "DISTANCE:" +( (int)(GameController.instance.MyCar.transform.position.x - GameController.instance.PosFirstCar.position.x) )+"m";
+        if (GameController.instance.MyCar != null)
+            Distance.text = "DISTANCE:" +( (int)(GameController.instance.MyCar.transform.position.x - GameController.instance.PosFirstCar.position.x) )+"m";
     }
     public float duration;
     IEnumerator CaptureImg()
