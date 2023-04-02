@@ -18,7 +18,7 @@ public class CarController : NetworkBehaviour
     public bool Lose = false;
     public ParticleSystem fx;
     NetworkObject networkObject;
-    ulong ownerClientId;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -27,11 +27,15 @@ public class CarController : NetworkBehaviour
         
       
     }
+    public override void OnNetworkSpawn()
+    {
+        base.OnNetworkSpawn();
+        GameController.instance.MyCar =  this.gameObject;
+    }
     private void OnEnable()
     {
-        networkObject = GetComponent<NetworkObject>();
+        SetUpNetWork();
 
-        ownerClientId = networkObject.OwnerClientId;
         MyEvent.Gas += Gas;
         MyEvent.ReleaseGas += ReleaseGas;
         MyEvent.Brake += Brake;
@@ -40,6 +44,12 @@ public class CarController : NetworkBehaviour
         MyEvent.GameLose += GameLose;
         StartCoroutine(MoveToFoward());
         StartCoroutine(FuelDown(3, 0.05f));
+    }
+    public void SetUpNetWork()
+    {
+        networkObject = GetComponent<NetworkObject>();
+
+        
     }
     private void OnDisable()
     {
@@ -61,7 +71,9 @@ public class CarController : NetworkBehaviour
     }
     public void GameLose()
     {
+        if (!IsOwner) return;                          
         Lose = true;
+        GameController.instance.Game_Lose();
         
     }
     public void Gas()
@@ -91,7 +103,7 @@ public class CarController : NetworkBehaviour
   
         while ((true || !Lose)   )
         {
-            if ((networkObject.OwnerClientId == NetworkManager.Singleton.LocalClientId || networkObject.IsOwner))
+            if (/*(networkObject.OwnerClientId == NetworkManager.Singleton.LocalClientId || networkObject.IsOwner) ||*/ IsOwner)
             {
                 MyCamera.Instance.SetTarGet(gameObject);
                 if (Fuel <= 0)
@@ -175,6 +187,12 @@ public class CarController : NetworkBehaviour
         }
     }
 
-  
+
+    public bool CheckIsOwner()
+    {
+        return IsOwner;
+    }
+
+
 
 }

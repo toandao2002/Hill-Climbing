@@ -5,7 +5,7 @@ using DG.Tweening;
 
 public class Man : MonoBehaviour
 {
-  
+    public CarController carController;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,18 +21,20 @@ public class Man : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            // game lose
-            DOVirtual.DelayedCall(3 ,()=> {
-                MyEvent.GameLose?.Invoke();
-                
-                });
+            
+            DOVirtual.DelayedCall(3, () => {
+                if(carController.CheckIsOwner())
+                    MyEvent.GameLose?.Invoke();
+
+            });
             int count = transform.childCount;
-            for (int i =  count-1; i >=0 ; i--)
+            for (int i = count - 1; i >= 0; i--)
             {
                 transform.GetChild(i).gameObject.AddComponent<Rigidbody2D>();
                 transform.GetChild(i).SetParent(null);
             }
             GetComponent<BoxCollider2D>().enabled = false;
+        
         }
     }
 }

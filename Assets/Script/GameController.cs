@@ -17,6 +17,7 @@ public class GameController : MonoBehaviour
     public bool GameLose = false;
     public GameObject MyCar;
     public Transform PosFirstCar;
+    public bool ModeMultilPlayer = true;
     private void Awake()
     {
         if (instance == null)
@@ -29,6 +30,7 @@ public class GameController : MonoBehaviour
     }
     void Start()
     {
+
         /*id = DataGame.GetCar();
         Debug.Log($"/Vehicle/Car {id}");
         var car = Instantiate(Resources.Load<GameObject>($"Vehicle/Car {id}"));
@@ -51,6 +53,7 @@ public class GameController : MonoBehaviour
         
         
     }
+   
     bool Finished = false;
     IEnumerator CaptureImage()
     {
@@ -69,7 +72,7 @@ public class GameController : MonoBehaviour
      
     private void OnEnable()
     {
-        MyEvent.GameLose += Game_Lose;
+    
     }
     IEnumerator captureScreenshot()
     {
@@ -93,6 +96,16 @@ public class GameController : MonoBehaviour
         Gen += value;
         return Gen;
     }
+
+
+    ////////////network
+    public bool CheckIsHost()
+    {
+         
+        return (MyCar.GetComponent<CarController>().IsOwner|| NetworkManager.Singleton.IsHost);
+    }
+
+
     public void OnDestroy()
     {
         DataGame.SetCoin(Coin);
@@ -102,7 +115,10 @@ public class GameController : MonoBehaviour
     }
     public void OnDisable()
     {
-        MyEvent.GameLose -= Game_Lose;
+       
 
     }
+
+
+
 }

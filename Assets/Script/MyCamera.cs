@@ -26,7 +26,7 @@ public class MyCamera : MonoBehaviour
     }
     private void LateUpdate()
     {
-        if (OK)
+        if (OK && Target != null)
             transform.position = Dis + Target.transform.position;
     }
 }

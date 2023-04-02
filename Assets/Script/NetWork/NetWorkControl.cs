@@ -6,9 +6,9 @@ using Unity.Netcode.Transports.UNET;
 using UnityEngine.UI;
 using TMPro;
 using Unity.Netcode.Transports.UTP;
-public class MyNetWork : MonoBehaviour
+public class NetWorkControl : MonoBehaviour
 {
-    NetworkClient networkClient = new NetworkClient();
+    
     // Start is called before the first frame update
     public MyButton btn_client;
     public MyButton btn_server;
@@ -49,6 +49,7 @@ public class MyNetWork : MonoBehaviour
         changeServerIpAddress(IpAddressField.text);
         Debug.Log(IpAddressField.text);
         NetworkManager.Singleton.StartClient();
+        
         // 192.168.1.85
     }
     public void StartServer()
@@ -62,7 +63,12 @@ public class MyNetWork : MonoBehaviour
         NetworkManager.Singleton.StartHost();
     }
     public void stop() {
-        NetworkManager.Singleton.DisconnectClient(NetworkManager.Singleton.LocalClientId);
+        //if (NetworkManager.Singleton.IsClient)
+        {
+            NetworkManager.Singleton.Shutdown();
+        }
+       
+        ///NetworkManager.Singleton.DisconnectClient(NetworkManager.Singleton.LocalClientId);
     }
     // Update is called once per frame
     void Update()
