@@ -6,14 +6,16 @@ public enum PopUpName
 {
     PopUpItemsCar,
     PopUpChoseMap,
+ 
 }
-public class PopUp : MonoBehaviour
+public class ManagePopUp : MonoBehaviour
 {
     // Start is called before the first frame update
-    public static PopUp Instance;
+    public static ManagePopUp Instance;
     public List<BasePopUp> Popups ;
     public GameObject Paused;
     public GameObject GameLose;
+    public UpgratePopUp upgratePopUp;
     private void Awake()
     {
          if (Instance == null)

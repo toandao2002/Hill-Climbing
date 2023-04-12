@@ -19,7 +19,7 @@ public class MyCamera : MonoBehaviour
     }
     public void SetTarGet(GameObject gTarget)
     {
-        if (OK) return;
+        if (OK && GameController.instance.ModeGameOnline) return;
         OK = true;
         Target = gTarget;
         Dis = transform.position - Target.transform.position;

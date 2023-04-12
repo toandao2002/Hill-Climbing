@@ -29,10 +29,10 @@ public class Navigation : MonoBehaviour
     }
     public void ShowPopUp(PopUpName namePopup)
     {
-        PopUp.Instance.ShowPopUp(namePopup);
+        ManagePopUp.Instance.ShowPopUp(namePopup);
     }
     public void HidePoUp (PopUpName namePopup)
     {
-        PopUp.Instance.HidePopUp(namePopup);
+        ManagePopUp.Instance.HidePopUp(namePopup);
     }
 }

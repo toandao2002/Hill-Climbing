@@ -383,6 +383,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7d1b8e2d1606134192a5d41405db0e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  carController: {fileID: 5447554981468271584}
+  touchedGround: 0
 --- !u!1 &5447554981413483999
 GameObject:
   m_ObjectHideFlags: 0
@@ -430,6 +432,7 @@ GameObject:
   - component: {fileID: 5447554981468271586}
   - component: {fileID: 5447554981468271587}
   - component: {fileID: 8781314017457699688}
+  - component: {fileID: 5409343107296911754}
   m_Layer: 0
   m_Name: Car 2
   m_TagString: Player
@@ -542,7 +545,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FrontTire: {fileID: 5447554980805043773}
   BackTire: {fileID: 5447554982006006804}
-  Force: 200
+  smoothTime: 0.02
+  ForceTire: {x: 0, y: 0}
   _gas: 0
   _brake: 0
   ForceTorque: 200
@@ -617,6 +621,22 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0.12}
   m_Size: {x: 2.2, y: 0.37}
   m_Direction: 1
+--- !u!114 &5409343107296911754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5447554981468271589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 951099334
+  AlwaysReplicateAsRoot: 0
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
 --- !u!1 &5447554982006006808
 GameObject:
   m_ObjectHideFlags: 0

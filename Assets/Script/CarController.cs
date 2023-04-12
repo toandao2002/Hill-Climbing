@@ -23,7 +23,7 @@ public class CarController : NetworkBehaviour
     void Start()
     {
         Rig = GetComponent<Rigidbody2D>();
-        ForceTire = new Vector2(2000, 0);
+    
         
       
     }
@@ -67,11 +67,11 @@ public class CarController : NetworkBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
-        
+       
     }
     public void GameLose()
     {
-        if (!IsOwner) return;                          
+        if (!IsOwner && GameController.instance.ModeGameOnline) return;                          
         Lose = true;
         GameController.instance.Game_Lose();
         
@@ -103,9 +103,10 @@ public class CarController : NetworkBehaviour
   
         while ((true || !Lose)   )
         {
-            if (/*(networkObject.OwnerClientId == NetworkManager.Singleton.LocalClientId || networkObject.IsOwner) ||*/ IsOwner)
+            if (/*(networkObject.OwnerClientId == NetworkManager.Singleton.LocalClientId || networkObject.IsOwner) ||*/ IsOwner || !GameController.instance.ModeGameOnline)
             {
-                MyCamera.Instance.SetTarGet(gameObject);
+                if (GameController.instance.ModeGameOnline)
+                    MyCamera.Instance.SetTarGet(gameObject);
                 if (Fuel <= 0)
                 {
                     fx.gameObject.SetActive(false);
@@ -178,7 +179,7 @@ public class CarController : NetworkBehaviour
             }
             else
             {
-                if (!Lose)
+                if (!Lose &&(IsOwner || !GameController.instance.ModeGameOnline))
                     MyEvent.GameLose?.Invoke();
                 break;
             }
@@ -190,6 +191,7 @@ public class CarController : NetworkBehaviour
 
     public bool CheckIsOwner()
     {
+   
         return IsOwner;
     }
 

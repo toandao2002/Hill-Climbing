@@ -13,7 +13,7 @@ public class ScreenGamePlay : MonoBehaviour
     public void Start()
     {
         Pause.onClick.AddListener(()=> {
-            PopUp.Instance.ShowPaused();
+            ManagePopUp.Instance.ShowPaused();
         });
         Coin.text = DataGame.GetCoin().ToString();
         Gem.text = DataGame.GetGem().ToString();

@@ -6,6 +6,7 @@ using DG.Tweening;
 public class Man : MonoBehaviour
 {
     public CarController carController;
+    public bool touchedGround = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,10 +22,19 @@ public class Man : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            
+            if (!touchedGround)
+            {
+                touchedGround = true;
+            }
+            else
+            {
+                return;
+            }
             DOVirtual.DelayedCall(3, () => {
-                if(carController.CheckIsOwner())
+                if((carController.CheckIsOwner()|| !GameController.instance.ModeGameOnline))
                     MyEvent.GameLose?.Invoke();
+                 
+                
 
             });
             int count = transform.childCount;

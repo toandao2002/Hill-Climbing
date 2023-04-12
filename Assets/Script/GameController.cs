@@ -18,6 +18,7 @@ public class GameController : MonoBehaviour
     public GameObject MyCar;
     public Transform PosFirstCar;
     public bool ModeMultilPlayer = true;
+    public bool ModeGameOnline = false;
     private void Awake()
     {
         if (instance == null)
@@ -31,16 +32,25 @@ public class GameController : MonoBehaviour
     void Start()
     {
 
-        /*id = DataGame.GetCar();
-        Debug.Log($"/Vehicle/Car {id}");
-        var car = Instantiate(Resources.Load<GameObject>($"Vehicle/Car {id}"));
-        MyCar = car;
-    
-        car.transform.position = PosFirstCar.position;
-        MyCamera.Instance.SetTarGet(car);*/
+        InitializeCarOffliner();
+
         Coin = DataGame.GetCoin();
         Gen = DataGame.GetGem();
 
+    }
+    void InitializeCarOffliner()
+    {
+       
+     
+        id = DataGame.GetCar();
+        Debug.Log($"/Vehicle/Car {id}");
+        var car = Instantiate(Resources.Load<GameObject>($"Vehicle/Car {id}"));
+        int tmp= DataGame.Get(DataGame.CarToolEngine + DataGame.GetCar());
+        car.GetComponent<CarController>().ForceTire = new Vector2(DataGame.Get(DataGame.CarToolEngine + DataGame.GetCar()),0);
+        MyCar = car;
+
+        car.transform.position = PosFirstCar.position;
+        MyCamera.Instance.SetTarGet(car);
     }
     // Start is called before the first frame update
     public void Game_Lose()
@@ -64,7 +74,7 @@ public class GameController : MonoBehaviour
         bool ok = false;
      
     
-        PopUp.Instance.ShowGameLose();
+        ManagePopUp.Instance.ShowGameLose();
         
     }
     public Image imageDisplay;

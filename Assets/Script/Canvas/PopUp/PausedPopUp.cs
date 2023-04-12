@@ -11,7 +11,7 @@ public class PausedPopUp : MonoBehaviour
     private void Start()
     {
         Resume.onClick.AddListener(()=> {
-            PopUp.Instance.HidePaused();
+            ManagePopUp.Instance.HidePaused();
         });
         Restart.onClick.AddListener(()=> {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);

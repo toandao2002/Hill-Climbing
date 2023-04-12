@@ -8,6 +8,17 @@ public static class DataGame
     public static string Gen = "Gen";
     public static string Car = "Car";
     public static string Stage = "Stage";
+
+    public static string CarToolEngine = "CarToolEngine";
+    public static string CarToolSuspension = "CarToolSuspension";
+    public static string CarToolTire = "CarToolTire";
+    public static string CarToolDownForce = "CarToolDownForce";
+
+
+    public static string Engine = "Engine";
+    public static string Suspension = "Suspension";
+    public static string Tire = "Tire";
+    public static string DownForce = "DownForce";
     public static int GetCoin()
     {
         if (!PlayerPrefs.HasKey(Coin))
