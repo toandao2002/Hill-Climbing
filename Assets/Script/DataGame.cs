@@ -71,6 +71,9 @@ public static class DataGame
     {
         PlayerPrefs.Save();
     }
-
+    public static void resetData()
+    {
+        PlayerPrefs.DeleteAll();
+    }
     
 }

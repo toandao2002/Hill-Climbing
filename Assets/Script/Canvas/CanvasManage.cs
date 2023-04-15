@@ -18,4 +18,8 @@ public class CanvasManage : MonoBehaviour
     {
         
     }
+    public void _Reset()
+    {
+        DataGame.resetData();
+    }
 }

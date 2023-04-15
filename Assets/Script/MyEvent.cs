@@ -16,6 +16,8 @@ public static class MyEvent
     public static Action<int> IncGen;
     public static Action<float> ChangecFuel;
 
+    public static Action ChangeLevelTune;
+
     public static Action<Vector3, int> ChosedCar;
     public static Action<Vector3, int> ChosedState;
 

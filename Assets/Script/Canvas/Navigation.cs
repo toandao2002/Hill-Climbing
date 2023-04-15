@@ -14,17 +14,24 @@ public class Navigation : MonoBehaviour
     private void Start()
     {
         BtnVehicle.onClick.AddListener( () => {
+            HidePoUp(PopUpName.PopupTune);
             ShowPopUp(PopUpName.PopUpItemsCar);
             HidePoUp(PopUpName.PopUpChoseMap);
 
         });
         BtnStage.onClick.AddListener( () => {
             ShowPopUp(PopUpName.PopUpChoseMap);
+            HidePoUp(PopUpName.PopupTune);
             HidePoUp(PopUpName.PopUpItemsCar);
         });
         BtnStart.onClick.AddListener(()=> {
             int id = DataGame.Get(DataGame.Stage);
             SceneManager.LoadScene($"GamePlay {id}");
+        });
+        BtnTune.onClick.AddListener(()=> {
+            HidePoUp(PopUpName.PopUpItemsCar);
+            HidePoUp(PopUpName.PopUpChoseMap);
+            ShowPopUp(PopUpName.PopupTune);
         });
     }
     public void ShowPopUp(PopUpName namePopup)

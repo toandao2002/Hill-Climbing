@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
- 
+using UnityEngine.UI;
+
 public class CarController : NetworkBehaviour
 {
    
@@ -18,14 +19,23 @@ public class CarController : NetworkBehaviour
     public bool Lose = false;
     public ParticleSystem fx;
     NetworkObject networkObject;
-    
+    public float friction;
+    public float suspension;
     // Start is called before the first frame update
     void Start()
     {
         Rig = GetComponent<Rigidbody2D>();
-    
-        
-      
+        ForceTire = new Vector2(DataGame.Get(DataGame.CarToolEngine + DataGame.GetCar()), 0);
+        friction = DataGame.Get(DataGame.CarToolTire + DataGame.GetCar());
+        suspension = DataGame.Get(DataGame.CarToolSuspension + DataGame.GetCar());
+        ChangeFriction();
+        var wheelJoint2D = GetComponents<WheelJoint2D>();
+        foreach (WheelJoint2D i in wheelJoint2D)
+        {
+            var temp = i.suspension;
+            temp.frequency =  suspension;
+            i.suspension = temp;
+        }
     }
     public override void OnNetworkSpawn()
     {
@@ -67,7 +77,7 @@ public class CarController : NetworkBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
-       
+        
     }
     public void GameLose()
     {
@@ -167,6 +177,7 @@ public class CarController : NetworkBehaviour
     void UpdateFuel(float value ) {
         Fuel = value;
     }
+   
     IEnumerator FuelDown(float duration , float value_change)
     {
         while (true)
@@ -186,8 +197,16 @@ public class CarController : NetworkBehaviour
            
            
         }
-    }
 
+    }
+ 
+    public void ChangeFriction()
+    {
+        FrontTire.GetComponent<Rigidbody2D>().sharedMaterial.friction = friction;
+        FrontTire.GetComponent<Rigidbody2D>().sharedMaterial = FrontTire.GetComponent<Rigidbody2D>().sharedMaterial;
+        BackTire.GetComponent<Rigidbody2D>().sharedMaterial.friction = friction;
+        BackTire.GetComponent<Rigidbody2D>().sharedMaterial = BackTire.GetComponent<Rigidbody2D>().sharedMaterial;
+    }
 
     public bool CheckIsOwner()
     {

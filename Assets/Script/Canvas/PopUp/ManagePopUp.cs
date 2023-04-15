@@ -6,7 +6,7 @@ public enum PopUpName
 {
     PopUpItemsCar,
     PopUpChoseMap,
- 
+    PopupTune,
 }
 public class ManagePopUp : MonoBehaviour
 {

@@ -10,6 +10,15 @@ public class LeftCanvasUi : MonoBehaviour
     {
         if (Instance == null) Instance = this;
     }
+    private void OnEnable()
+    {
+        MyEvent.IncCoin += SetCoin;   
+    }
+    private void OnDisable()
+    {
+        MyEvent.IncCoin -= SetCoin;
+
+    }
     public TMP_Text Coin;
     public TMP_Text Gem;
 

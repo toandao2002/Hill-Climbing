@@ -174,6 +174,7 @@ MonoBehaviour:
   TwoEngine: 1
   Lose: 0
   fx: {fileID: 5906815957128754217}
+  friction: 0
   TimeDelay: 0.02
   forceMode2D: 0
 --- !u!235 &253182204390699147
@@ -194,7 +195,7 @@ WheelJoint2D:
   m_ConnectedAnchor: {x: 0, y: 0}
   m_Suspension:
     m_DampingRatio: 0.7
-    m_Frequency: 3
+    m_Frequency: 100
     m_Angle: 90
   m_UseMotor: 0
   m_Motor:
@@ -439,6 +440,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carController: {fileID: 253182204390699145}
+  touchedGround: 0
 --- !u!114 &1559766162889313643
 MonoBehaviour:
   m_ObjectHideFlags: 0

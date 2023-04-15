@@ -45,8 +45,7 @@ public class GameController : MonoBehaviour
         id = DataGame.GetCar();
         Debug.Log($"/Vehicle/Car {id}");
         var car = Instantiate(Resources.Load<GameObject>($"Vehicle/Car {id}"));
-        int tmp= DataGame.Get(DataGame.CarToolEngine + DataGame.GetCar());
-        car.GetComponent<CarController>().ForceTire = new Vector2(DataGame.Get(DataGame.CarToolEngine + DataGame.GetCar()),0);
+         
         MyCar = car;
 
         car.transform.position = PosFirstCar.position;

@@ -23,7 +23,7 @@ public class UpgratePopUp : BasePopUp
         _tool = tool;
         Name.text = tool.nameTune.ToString();
         content.text = tool.content;
-        id = DataGame.Get(_tool.nameTune.ToString());
+        id = DataGame.Get(_tool.nameTune.ToString() + DataGame.GetCar());
         if (DataGame.GetCoin() >= _tool.Coin[id])
         {
             State.text = "Upgrate";
@@ -35,11 +35,14 @@ public class UpgratePopUp : BasePopUp
     }
     public void Upgrate()
     {
-        if (DataGame.GetCoin() >= _tool.Coin[DataGame.Get(_tool.nameTune.ToString())])
+        if (DataGame.GetCoin() >= _tool.Coin[DataGame.Get(_tool.nameTune.ToString() +DataGame.GetCar())])
         {
-            DataGame.SetCoin(DataGame.GetCoin ()  - _tool.Coin[DataGame.Get(_tool.nameTune.ToString())]);
-            DataGame.Set(_tool.nameTune.ToString(), DataGame.Get(_tool.nameTune.ToString())+1);
+           
+            DataGame.SetCoin(DataGame.GetCoin ()  - _tool.Coin[DataGame.Get(_tool.nameTune.ToString() +DataGame.GetCar())]);
+            DataGame.Set(_tool.nameTune.ToString() + DataGame.GetCar(), DataGame.Get(_tool.nameTune.ToString() + DataGame.GetCar()) +1);
             handleUpgrate();
+            MyEvent.IncCoin?.Invoke(DataGame.GetCoin());
+            MyEvent.ChangeLevelTune?.Invoke();
         }
     }
     void handleUpgrate()

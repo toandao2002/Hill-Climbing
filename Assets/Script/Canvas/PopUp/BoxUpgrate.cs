@@ -21,12 +21,26 @@ public class BoxUpgrate : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        num_level = DataGame.Get(tool.nameTune.ToString());
-        
-        Coin.text = tool.Coin[num_level].ToString();
-        level.text = (1+ num_level) + "/" + tool.Coin.Count;
+      
+    }
+    private void OnEnable()
+    {
+        SetData();
+        MyEvent.ChangeLevelTune += SetData;
         nameTune = tool.nameTune;
         btn.onClick.AddListener(ShowPopUpgrate);
+    }
+    private void OnDisable()
+    {
+        MyEvent.ChangeLevelTune -= SetData;
+
+    }
+    public void SetData()
+    {
+        num_level = DataGame.Get(tool.nameTune.ToString() + DataGame.GetCar());
+
+        Coin.text = tool.Coin[num_level].ToString();
+        level.text = (1 + num_level) + "/" + tool.Coin.Count;
     }
     public void ShowPopUpgrate()
     {
