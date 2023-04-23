@@ -5,6 +5,9 @@ public enum NameSound
 {
     Coin,
     CaputureScreen,
+    CarIdle,
+    CarRun,
+    StartRun,
 }
 public class ManangeAudio : MonoBehaviour
 {
@@ -38,5 +41,22 @@ public class ManangeAudio : MonoBehaviour
         audioSources.Enqueue(CurAudioSouce);
       
     }
- 
+    public AudioSource NewLoopAudio(NameSound id, bool loop, float volume = 1f)
+    {
+        var ob = Instantiate(audioSourcesTmp[0]);
+        ob.clip = Sounds[(int)id];
+        ob.volume = volume;
+        ob.loop = loop;
+        ob.Play();
+        return ob;
+    }
+    public AudioSource LoopAudio(NameSound id,int idS,  bool loop = true, float volume = 1f)
+    {
+        var ob = (audioSourcesTmp[idS]);
+        ob.clip = Sounds[(int)id];
+        ob.volume = volume;
+        ob.loop = loop;
+        ob.Play();
+        return ob;
+    }
 }

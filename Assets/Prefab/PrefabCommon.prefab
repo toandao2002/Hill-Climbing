@@ -535,6 +535,9 @@ MonoBehaviour:
   Sounds:
   - {fileID: 8300000, guid: 6d8631c7171770641b2b311602df72a8, type: 3}
   - {fileID: 8300000, guid: 3008f06a66133384f8bd805e5fb9472d, type: 3}
+  - {fileID: 8300000, guid: 62096890557688f4bb4e948059ef7648, type: 3}
+  - {fileID: 8300000, guid: 2e91cff89dbc23446819128be7db1dc5, type: 3}
+  - {fileID: 8300000, guid: aa98f6f08923b3b42890ce641920e8d5, type: 3}
 --- !u!1 &749280046277185518
 GameObject:
   m_ObjectHideFlags: 0
@@ -1479,7 +1482,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: d2526fb524e4989419d502075036ec61, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -2871,6 +2874,8 @@ MonoBehaviour:
   GameLose: 0
   MyCar: {fileID: 0}
   PosFirstCar: {fileID: 3619359301269619868}
+  ModeMultilPlayer: 1
+  ModeGameOnline: 0
   imageDisplay: {fileID: 4856466665363560158}
 --- !u!1 &2356065131079098019
 GameObject:
@@ -4399,6 +4404,7 @@ MonoBehaviour:
   Popups: []
   Paused: {fileID: 5798400483818763892}
   GameLose: {fileID: 8156741897729935156}
+  upgratePopUp: {fileID: 0}
 --- !u!1 &5798400483818763892
 GameObject:
   m_ObjectHideFlags: 0
@@ -4802,7 +4808,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 2e91cff89dbc23446819128be7db1dc5, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -5827,6 +5833,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da3961ab3c08a1745a71c6a749c761d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Main: {fileID: 0}
   Continue: {fileID: 5005166780125128744}
   Distance: {fileID: 1024290453692773478}
   Coin_txt: {fileID: 540491148774394969}

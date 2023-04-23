@@ -25,14 +25,19 @@ public class CarController : NetworkBehaviour
     void Start()
     {
         Rig = GetComponent<Rigidbody2D>();
-        ForceTire = new Vector2(DataGame.Get(DataGame.CarToolEngine + DataGame.GetCar()), 0);
+        int speed = DataGame.Get(DataGame.CarToolEngine + DataGame.GetCar());
+        if (speed == 0) speed = 1000;
+        ForceTire = new Vector2(speed, 0);
         friction = DataGame.Get(DataGame.CarToolTire + DataGame.GetCar());
+        if (friction == 0) friction = 1;
         suspension = DataGame.Get(DataGame.CarToolSuspension + DataGame.GetCar());
+        if (suspension == 0) suspension = 3;
         ChangeFriction();
         var wheelJoint2D = GetComponents<WheelJoint2D>();
         foreach (WheelJoint2D i in wheelJoint2D)
         {
             var temp = i.suspension;
+            
             temp.frequency =  suspension;
             i.suspension = temp;
         }
@@ -89,6 +94,9 @@ public class CarController : NetworkBehaviour
     public void Gas()
     {
         _gas = true;
+        ManangeAudio.Instacne.PlaySound(NameSound.StartRun);
+        ManangeAudio.Instacne.LoopAudio(NameSound.CarRun, 1);
+        
     }
     public void ReleaseGas()
     {
@@ -214,6 +222,34 @@ public class CarController : NetworkBehaviour
         return IsOwner;
     }
 
+    void Handle(int offset, int [] a )
+    {
+        int size = a.Length;
+        offset %= size;
+         
+        if (offset <= 0)
+        {
+            for (int i = -offset; i < size; i++)
+            {
+                print(a[i] + " ");
+            }
+            for (int i = 0; i < -offset; i++)
+            {
+                print(a[i] + " ");
+            }
+        }
+        else
+        {
+            for (int i = size - offset; i < size; i++)
+            {
+                print(a[i] + " ");
+            }
+            for (int i = 0; i < size - offset; i++)
+            {
+                print(a[i] + " ");
+            }
 
+        }
+    }
 
 }
