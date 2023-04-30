@@ -101,15 +101,18 @@ public class CarController : NetworkBehaviour
     public void ReleaseGas()
     {
         _gas = false;
-        
+        ManangeAudio.Instacne.LoopAudio(NameSound.CarIdle, 1);
     }
     
     public void Brake()
     {
+        ManangeAudio.Instacne.PlaySound(NameSound.StartRun);
+        ManangeAudio.Instacne.LoopAudio(NameSound.CarRun, 1);
         _brake = true;
     }
     public void ReleaseBrake()
     {
+        ManangeAudio.Instacne.LoopAudio(NameSound.CarIdle, 1);
         _brake = false;
     }
     public float TimeDelay = 0.02f;

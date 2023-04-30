@@ -7,7 +7,7 @@ public class ItemChoseCar : ItemChose
     public override void BeChosed()
     {
         base.BeChosed();
-        MyEvent.ChosedCar(transform.localPosition, id);
+        MyEvent.ChosedCar?.Invoke(transform.localPosition, id);
         DataGame.SetCar(id);
     }
     public override void NoBeChosed()

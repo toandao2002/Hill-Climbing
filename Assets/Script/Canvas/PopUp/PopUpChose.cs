@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class PopUpChose : BasePopUp
      /* // 2
@@ -16,7 +17,10 @@ public class PopUpChose : BasePopUp
     // Start is called before the first frame update
     void Start()
     {
-        
+        HorizontalLayoutGroup layoutGroup = content.GetComponent<HorizontalLayoutGroup>();
+        layoutGroup.padding.left = (int)CanvasManage.instance.witdh / 2;
+        layoutGroup.padding.right = (int) CanvasManage.instance.witdh / 2 ;
+        Debug.Log(CanvasManage.instance.witdh / 2);
     }
     private void OnEnable()
     {
@@ -30,7 +34,8 @@ public class PopUpChose : BasePopUp
     }
     void updatePosContent(Vector3 posItem , int id)
     {
-        content.transform.localPosition =   new Vector3(640 - posItem.x, content.transform.localPosition.y,0);
+       
+        content.transform.localPosition =   new Vector3(CanvasManage.instance.witdh / 2 - posItem.x + 350 / 2, content.transform.localPosition.y,0);
         for (int i = 0 ;i < content.transform.childCount; i ++){
             if (i != id)
             {
