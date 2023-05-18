@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class CarController : NetworkBehaviour
 {
-   
+    
     public Rigidbody2D FrontTire;
     public Rigidbody2D BackTire;
     public float smoothTime = 0.02f;
@@ -37,9 +37,32 @@ public class CarController : NetworkBehaviour
         foreach (WheelJoint2D i in wheelJoint2D)
         {
             var temp = i.suspension;
-            
-            temp.frequency =  suspension;
+
+            temp.frequency = suspension;
             i.suspension = temp;
+        }
+
+        string layername = "G1";
+        if (NetworkObjectId == 1)
+        {
+             
+            layername = "G1";
+            
+        } else
+        {
+            layername = "G2";
+        }
+        int layer = LayerMask.NameToLayer(layername);
+        ChangeChildrenLayer(gameObject, layer);
+        gameObject.layer = layer;
+    }
+    private void ChangeChildrenLayer(GameObject parent, int layer)
+    {
+        parent.layer = layer;
+        for (int i = 0; i < parent.transform.childCount; i++)
+        {
+            parent.transform.GetChild(i).gameObject.layer = layer;
+            ChangeChildrenLayer(parent.transform.GetChild(i).gameObject, layer);
         }
     }
     public override void OnNetworkSpawn()
@@ -128,6 +151,7 @@ public class CarController : NetworkBehaviour
             {
                 if (GameController.instance.ModeGameOnline)
                     MyCamera.Instance.SetTarGet(gameObject);
+                RPM.instacne.Zr = Mathf.Abs(BackTire.angularVelocity);
                 if (Fuel <= 0)
                 {
                     fx.gameObject.SetActive(false);
@@ -182,9 +206,10 @@ public class CarController : NetworkBehaviour
     void AddForceTorque(Rigidbody2D obj_rig, Vector2 target)
     {
         Vector2 force_tor = Vector2.SmoothDamp(new Vector2(obj_rig.angularVelocity , 0 ), target,ref velocity_tor,smoothTime );
-      
+       
         obj_rig.angularVelocity = force_tor.x;
     }
+    
     void UpdateFuel(float value ) {
         Fuel = value;
     }

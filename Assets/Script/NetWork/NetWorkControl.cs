@@ -49,18 +49,22 @@ public class NetWorkControl : MonoBehaviour
         changeServerIpAddress(IpAddressField.text);
         Debug.Log(IpAddressField.text);
         NetworkManager.Singleton.StartClient();
-        
+       
+
         // 192.168.1.85
     }
+ 
     public void StartServer()
     {
         changeServerIpAddress(IpAddressField.text);
         NetworkManager.Singleton.StartServer();
+      
     }
     public void StartHost()
     {
         changeServerIpAddress(IpAddressField.text);
         NetworkManager.Singleton.StartHost();
+      
     }
     public void stop() {
         //if (NetworkManager.Singleton.IsClient)

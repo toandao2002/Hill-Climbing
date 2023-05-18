@@ -17,8 +17,9 @@ public class GameController : MonoBehaviour
     public bool GameLose = false;
     public GameObject MyCar;
     public Transform PosFirstCar;
-    public bool ModeMultilPlayer = true;
+     
     public bool ModeGameOnline = false;
+ 
     private void Awake()
     {
         if (instance == null)
@@ -32,10 +33,25 @@ public class GameController : MonoBehaviour
     void Start()
     {
 
-        InitializeCarOffliner();
+        if (!ModeGameOnline)
+          InitializeCarOffliner();
+        else
+        {
+            initializeCaronLine();
+        }
 
         Coin = DataGame.GetCoin();
         Gen = DataGame.GetGem();
+
+    }
+    public void  initializeCaronLine()
+    {
+        id = DataGame.GetCar();
+        Debug.Log($"/Vehicle/Car {id}");
+        GameObject car = (Resources.Load<GameObject>($"Vehicle/Car {id}"));
+       
+       
+        NetworkManager.Singleton.NetworkConfig.PlayerPrefab = car;
 
     }
     void InitializeCarOffliner()

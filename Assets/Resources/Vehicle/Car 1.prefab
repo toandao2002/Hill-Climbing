@@ -305,6 +305,7 @@ GameObject:
   - component: {fileID: 9120108360940005106}
   - component: {fileID: 3185404779865255874}
   - component: {fileID: 3472882520803440526}
+  - component: {fileID: -8297229872462336475}
   m_Layer: 0
   m_Name: Car 1
   m_TagString: Player
@@ -427,6 +428,8 @@ MonoBehaviour:
   TwoEngine: 0
   Lose: 0
   fx: {fileID: 5943135288879682994}
+  friction: 0
+  suspension: 0
   TimeDelay: 0.02
   forceMode2D: 0
 --- !u!235 &9120108360940005107
@@ -509,6 +512,32 @@ MonoBehaviour:
   AlwaysReplicateAsRoot: 0
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
+--- !u!114 &-8297229872462336475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9120108360940005108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54c9647dc784a46bca664910f182491e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SyncPositionX: 1
+  SyncPositionY: 1
+  SyncPositionZ: 0
+  SyncRotAngleX: 0
+  SyncRotAngleY: 0
+  SyncRotAngleZ: 1
+  SyncScaleX: 0
+  SyncScaleY: 0
+  SyncScaleZ: 0
+  PositionThreshold: 0.001
+  RotAngleThreshold: 0.01
+  ScaleThreshold: 0.01
+  InLocalSpace: 0
+  Interpolate: 1
 --- !u!1 &9120108361219489800
 GameObject:
   m_ObjectHideFlags: 0

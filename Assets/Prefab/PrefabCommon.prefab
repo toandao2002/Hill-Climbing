@@ -411,6 +411,7 @@ GameObject:
   - component: {fileID: 2067881258653825433}
   - component: {fileID: 7301704448356288807}
   - component: {fileID: 8298018352187930420}
+  - component: {fileID: 79482167287282018}
   m_Layer: 5
   m_Name: Boost
   m_TagString: Untagged
@@ -477,6 +478,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &79482167287282018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 324910062887862327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f387fd0c6d9fd0143ac38315c84b3589, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bar: {fileID: 1389985620244287921}
+  Zr: 0
 --- !u!1 &617295162781643936
 GameObject:
   m_ObjectHideFlags: 0
@@ -792,7 +807,7 @@ GameObject:
   - component: {fileID: 81676469096380316}
   - component: {fileID: 1294557685437100212}
   m_Layer: 5
-  m_Name: Bar
+  m_Name: Bar1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -805,14 +820,14 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1389985620244287921}
-  m_LocalRotation: {x: 0, y: 0, z: -0.0209424, w: 0.9997807}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6616934234485366191}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -2.4}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -1229,6 +1244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0775f4071c398f544b25d16475ca7f3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  witdh: 0
 --- !u!1 &2356065129165766495
 GameObject:
   m_ObjectHideFlags: 0
@@ -1482,7 +1498,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: d2526fb524e4989419d502075036ec61, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.501
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -4919,14 +4935,14 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6486800364870634392}
-  m_LocalRotation: {x: 0, y: 0, z: -0.0209424, w: 0.9997807}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6032093851605816660}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -2.4}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
