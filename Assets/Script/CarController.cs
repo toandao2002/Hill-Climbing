@@ -41,18 +41,17 @@ public class CarController : NetworkBehaviour
             temp.frequency = suspension;
             i.suspension = temp;
         }
-
-        string layername = "G1";
-        if (NetworkObjectId == 1)
+        int layer =6;
+     /*   for (int i = 6;i <=10; i++)
         {
-             
-            layername = "G1";
-            
-        } else
-        {
-            layername = "G2";
-        }
-        int layer = LayerMask.NameToLayer(layername);
+            if (!GameController.instance.layers.Contains(i))
+            {
+                layer = i;
+                GameController.instance.layers.Add(i);
+                break;
+            }
+        }*/
+       
         ChangeChildrenLayer(gameObject, layer);
         gameObject.layer = layer;
     }
@@ -205,9 +204,19 @@ public class CarController : NetworkBehaviour
     Vector2 velocity_tor;
     void AddForceTorque(Rigidbody2D obj_rig, Vector2 target)
     {
+
+        
         Vector2 force_tor = Vector2.SmoothDamp(new Vector2(obj_rig.angularVelocity , 0 ), target,ref velocity_tor,smoothTime );
+        if (target.x > 0)
+        {
+            obj_rig.angularVelocity = Mathf.Max(obj_rig.angularVelocity, force_tor.x);
+        }
+        else
+        {
+            obj_rig.angularVelocity = Mathf.Min(obj_rig.angularVelocity, force_tor.x);
+        }
        
-        obj_rig.angularVelocity = force_tor.x;
+         
     }
     
     void UpdateFuel(float value ) {
@@ -279,5 +288,9 @@ public class CarController : NetworkBehaviour
 
         }
     }
-
+    private void OnDestroy()
+    {
+        
+     
+    }
 }

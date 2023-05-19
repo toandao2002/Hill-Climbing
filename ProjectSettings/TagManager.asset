@@ -8,14 +8,15 @@ TagManager:
   - Coin
   - Gen
   - Ground
+  - Man
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - G1
+  - 
   - Water
   - UI
-  - G2
+  - 1
   - 
   - 
   - 
@@ -45,9 +46,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: G1
+  - name: 1
     uniqueID: 3770863421
     locked: 0
-  - name: G2
+  - name: 2
     uniqueID: 3020441249
+    locked: 0
+  - name: 3
+    uniqueID: 1677594513
+    locked: 0
+  - name: 4
+    uniqueID: 3995468871
+    locked: 0
+  - name: 5
+    uniqueID: 2041010941
     locked: 0

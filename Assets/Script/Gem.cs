@@ -20,7 +20,16 @@ public class Gem : Item
     {
         base.OnTriggerEnter2D(collision);
         ManangeAudio.Instacne.PlaySound( NameSound.Coin);
-        MyEvent.IncGen?.Invoke(Gem_Value);
-
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            if (collision.GetComponent<CarController>().IsOwner)
+                        MyEvent.IncGen?.Invoke(Gem_Value);
+        }
+            
+        else if (collision.gameObject.CompareTag("Man"))
+            if (collision.transform.parent.GetComponent<CarController>().IsOwner)
+            {
+                MyEvent.IncGen?.Invoke(Gem_Value);
+            }
     }
 }

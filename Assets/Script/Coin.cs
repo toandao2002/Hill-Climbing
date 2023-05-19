@@ -21,7 +21,15 @@ public class Coin : Item
 
         base.OnTriggerEnter2D(collision);
         ManangeAudio.Instacne.PlaySound(NameSound.Coin);
-        MyEvent.IncCoin?.Invoke(Score);
-       
+        if (collision.gameObject.CompareTag("Player")) { 
+
+            if (collision.GetComponent<CarController>().IsOwner)
+                MyEvent.IncCoin?.Invoke(Score); 
+        }
+            else if (collision.gameObject.CompareTag("Man"))
+                if (collision.transform.parent.GetComponent<CarController>().IsOwner)
+                {
+                    MyEvent.IncCoin?.Invoke(Score);
+                }
     }
 }

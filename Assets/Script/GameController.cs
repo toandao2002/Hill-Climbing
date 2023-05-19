@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Net;
 using Unity.Netcode;
 using Unity.Netcode.Components;
 using UnityEditor;
@@ -19,40 +21,48 @@ public class GameController : MonoBehaviour
     public Transform PosFirstCar;
      
     public bool ModeGameOnline = false;
- 
+    public PlayerSpawner playerSpawner;
+    public List<int> layers;
     private void Awake()
     {
         if (instance == null)
         {
             instance = this;
         }
-       
-       
-        
+      
     }
     void Start()
     {
-
+        AutoConnectServer();
         if (!ModeGameOnline)
           InitializeCarOffliner();
         else
         {
-            initializeCaronLine();
+           
         }
 
         Coin = DataGame.GetCoin();
         Gen = DataGame.GetGem();
 
     }
-    public void  initializeCaronLine()
+    public void  initializeCarOnLine()
     {
         id = DataGame.GetCar();
         Debug.Log($"/Vehicle/Car {id}");
         GameObject car = (Resources.Load<GameObject>($"Vehicle/Car {id}"));
-       
-       
-        NetworkManager.Singleton.NetworkConfig.PlayerPrefab = car;
+        // call server for get Player
+        playerSpawner.SpawnPlayerServerRpc(NetworkManager.Singleton.LocalClientId, id);
 
+    }
+    public void AutoConnectServer()
+    {
+        string hostName = Dns.GetHostName(); // Retrive the Name of HOST
+        Console.WriteLine(hostName);
+        // Get the IP
+        string myIP = Dns.GetHostByName(hostName).AddressList[0].ToString();
+        Debug.Log(myIP);
+        Console.WriteLine("My IP Address is :" + myIP);
+        Console.ReadKey();
     }
     void InitializeCarOffliner()
     {

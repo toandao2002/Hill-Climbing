@@ -18,9 +18,16 @@ public class Fuel : Item
     public override void OnTriggerEnter2D(Collider2D collision)
     {
         base.OnTriggerEnter2D(collision);
+        
         if (collision.gameObject.CompareTag("Player"))
-        {
-            MyEvent.ChangecFuel?.Invoke(1);
-        }
+            if (collision.GetComponent<CarController>().IsOwner)
+            {
+                MyEvent.ChangecFuel?.Invoke(1);
+            }
+        else if (collision.gameObject.CompareTag("Man"))
+            if (collision.transform.parent.GetComponent<CarController>().IsOwner)
+            {
+                MyEvent.ChangecFuel?.Invoke(1);
+            }
     }
 }
