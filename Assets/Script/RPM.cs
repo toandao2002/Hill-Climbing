@@ -8,11 +8,10 @@ public class RPM : MonoBehaviour
     public GameObject bar;
     RectTransform rec;
     public float Zr;
-    
+
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-      
         instacne = this;
         rec = bar.GetComponent<RectTransform>();
     }

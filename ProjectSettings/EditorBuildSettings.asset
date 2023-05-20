@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GamePlay/GamePlay 6.unity
     guid: c0336f06c2b17d447b8c72f10baf174d
+  - enabled: 1
+    path: Assets/Scenes/Intro.unity
+    guid: 4e05e7435b1f86b4690199ba12f9a675
   m_configObjects: {}

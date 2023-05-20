@@ -23,11 +23,11 @@ public class Coin : Item
         ManangeAudio.Instacne.PlaySound(NameSound.Coin);
         if (collision.gameObject.CompareTag("Player")) { 
 
-            if (collision.GetComponent<CarController>().IsOwner)
+            if (collision.GetComponent<CarController>().IsOwner || !GameController.instance.ModeGameOnline)
                 MyEvent.IncCoin?.Invoke(Score); 
         }
             else if (collision.gameObject.CompareTag("Man"))
-                if (collision.transform.parent.GetComponent<CarController>().IsOwner)
+                if (collision.transform.parent.GetComponent<CarController>().IsOwner || !GameController.instance.ModeGameOnline)
                 {
                     MyEvent.IncCoin?.Invoke(Score);
                 }

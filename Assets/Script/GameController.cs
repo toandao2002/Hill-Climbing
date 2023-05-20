@@ -12,7 +12,7 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour
 {
     public static GameController instance;
-
+    public GameObject canvasModeOnl;
     public int Coin;
     public int Gen;
     public int id;
@@ -33,6 +33,16 @@ public class GameController : MonoBehaviour
     }
     void Start()
     {
+        if (DataGame.GetMode() == 1)
+        {
+            canvasModeOnl.SetActive(true);
+            ModeGameOnline = true;
+        }
+        else
+        {
+            canvasModeOnl.SetActive(false);
+            ModeGameOnline = false;
+        }
         AutoConnectServer();
         if (!ModeGameOnline)
           InitializeCarOffliner();

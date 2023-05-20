@@ -19,6 +19,8 @@ public static class DataGame
     public static string Suspension = "Suspension";
     public static string Tire = "Tire";
     public static string DownForce = "DownForce";
+
+    public static string ModeMultilPlayer = "ModeMultilPlayer";
     public static int GetCoin()
     {
         if (!PlayerPrefs.HasKey(Coin))
@@ -55,6 +57,7 @@ public static class DataGame
     {
         PlayerPrefs.SetInt(Car, value);
     }
+
     public static int Get(string Key)
     {
         if (!PlayerPrefs.HasKey(Key))
@@ -66,6 +69,15 @@ public static class DataGame
     public static void Set(string Key, int value)
     {
         PlayerPrefs.SetInt(Key, value);
+    }
+
+    public static void SetMode(int value)
+    {
+        PlayerPrefs.SetInt(ModeMultilPlayer, value);
+    }
+    public static int GetMode()
+    {
+        return PlayerPrefs.GetInt(ModeMultilPlayer,0);
     }
     public static void Save()
     {

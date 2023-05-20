@@ -20,12 +20,12 @@ public class Fuel : Item
         base.OnTriggerEnter2D(collision);
         
         if (collision.gameObject.CompareTag("Player"))
-            if (collision.GetComponent<CarController>().IsOwner)
+            if (collision.GetComponent<CarController>().IsOwner || !GameController.instance.ModeGameOnline)
             {
                 MyEvent.ChangecFuel?.Invoke(1);
             }
         else if (collision.gameObject.CompareTag("Man"))
-            if (collision.transform.parent.GetComponent<CarController>().IsOwner)
+            if (collision.transform.parent.GetComponent<CarController>().IsOwner||!GameController.instance.ModeGameOnline)
             {
                 MyEvent.ChangecFuel?.Invoke(1);
             }
