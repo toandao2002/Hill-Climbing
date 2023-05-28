@@ -22,7 +22,7 @@ public class CarController : NetworkBehaviour
     public float friction;
     public float suspension;
     // Start is called before the first frame update
-    void Start()
+    public  void Start()
     {
         Rig = GetComponent<Rigidbody2D>();
         int speed = DataGame.Get(DataGame.CarToolEngine + DataGame.GetCar());
@@ -34,6 +34,8 @@ public class CarController : NetworkBehaviour
         if (suspension == 0) suspension = 3;
         ChangeFriction();
         var wheelJoint2D = GetComponents<WheelJoint2D>();
+        ForceTorque -= DataGame.Get(DataGame.CarToolDownForce + DataGame.GetCar());
+        
         foreach (WheelJoint2D i in wheelJoint2D)
         {
             var temp = i.suspension;
@@ -113,26 +115,26 @@ public class CarController : NetworkBehaviour
         GameController.instance.Game_Lose();
         
     }
-    public void Gas()
+    public virtual void Gas()
     {
         _gas = true;
         ManangeAudio.Instacne.PlaySound(NameSound.StartRun);
         ManangeAudio.Instacne.LoopAudio(NameSound.CarRun, 1);
         
     }
-    public void ReleaseGas()
+    public virtual void ReleaseGas()
     {
         _gas = false;
         ManangeAudio.Instacne.LoopAudio(NameSound.CarIdle, 1);
     }
     
-    public void Brake()
+    public  virtual void Brake()
     {
         ManangeAudio.Instacne.PlaySound(NameSound.StartRun);
         ManangeAudio.Instacne.LoopAudio(NameSound.CarRun, 1);
         _brake = true;
     }
-    public void ReleaseBrake()
+    public virtual void ReleaseBrake()
     {
         ManangeAudio.Instacne.LoopAudio(NameSound.CarIdle, 1);
         _brake = false;
@@ -140,7 +142,7 @@ public class CarController : NetworkBehaviour
     public float TimeDelay = 0.02f;
     public ForceMode2D forceMode2D;
     
-    IEnumerator MoveToFoward()
+    public virtual IEnumerator  MoveToFoward()
     {
        
   
@@ -201,7 +203,7 @@ public class CarController : NetworkBehaviour
         }
 
     }
-    Vector2 velocity_tor;
+    public Vector2 velocity_tor;
     void AddForceTorque(Rigidbody2D obj_rig, Vector2 target)
     {
 

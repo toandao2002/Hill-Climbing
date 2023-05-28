@@ -20,15 +20,16 @@ public class Coin : Item
     {
 
         base.OnTriggerEnter2D(collision);
-        ManangeAudio.Instacne.PlaySound(NameSound.Coin);
-        if (collision.gameObject.CompareTag("Player")) { 
-
+       
+        if (collision.gameObject.CompareTag("Player")) {
+            ManangeAudio.Instacne.PlaySound(NameSound.Coin);
             if (collision.GetComponent<CarController>().IsOwner || !GameController.instance.ModeGameOnline)
                 MyEvent.IncCoin?.Invoke(Score); 
         }
             else if (collision.gameObject.CompareTag("Man"))
                 if (collision.transform.parent.GetComponent<CarController>().IsOwner || !GameController.instance.ModeGameOnline)
                 {
+                    ManangeAudio.Instacne.PlaySound(NameSound.Coin);
                     MyEvent.IncCoin?.Invoke(Score);
                 }
     }

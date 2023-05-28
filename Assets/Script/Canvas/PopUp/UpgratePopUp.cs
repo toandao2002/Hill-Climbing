@@ -35,9 +35,14 @@ public class UpgratePopUp : BasePopUp
     }
     public void Upgrate()
     {
+        int num_level = DataGame.Get(_tool.nameTune.ToString() + DataGame.GetCar());
+
+        if (_tool.Coin.Count <= num_level+1) return;
         if (DataGame.GetCoin() >= _tool.Coin[DataGame.Get(_tool.nameTune.ToString() +DataGame.GetCar())])
         {
-           
+
+          
+
             DataGame.SetCoin(DataGame.GetCoin ()  - _tool.Coin[DataGame.Get(_tool.nameTune.ToString() +DataGame.GetCar())]);
             DataGame.Set(_tool.nameTune.ToString() + DataGame.GetCar(), DataGame.Get(_tool.nameTune.ToString() + DataGame.GetCar()) +1);
             handleUpgrate();

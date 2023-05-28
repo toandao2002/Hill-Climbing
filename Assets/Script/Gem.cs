@@ -19,9 +19,10 @@ public class Gem : Item
     public override void OnTriggerEnter2D(Collider2D collision)
     {
         base.OnTriggerEnter2D(collision);
-        ManangeAudio.Instacne.PlaySound( NameSound.Coin);
+   
         if (collision.gameObject.CompareTag("Player"))
         {
+            ManangeAudio.Instacne.PlaySound(NameSound.Coin);
             if (collision.GetComponent<CarController>().IsOwner || !GameController.instance.ModeGameOnline)
                         MyEvent.IncGen?.Invoke(Gem_Value);
         }
@@ -29,6 +30,7 @@ public class Gem : Item
         else if (collision.gameObject.CompareTag("Man"))
             if (collision.transform.parent.GetComponent<CarController>().IsOwner || !GameController.instance.ModeGameOnline)
             {
+                ManangeAudio.Instacne.PlaySound(NameSound.Coin);
                 MyEvent.IncGen?.Invoke(Gem_Value);
             }
     }
