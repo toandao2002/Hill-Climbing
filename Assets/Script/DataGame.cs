@@ -8,6 +8,8 @@ public static class DataGame
     public static string Gen = "Gen";
     public static string Car = "Car";
     public static string Stage = "Stage";
+    public static string ActiveStage = "ActiveStage";
+
 
     public static string CarToolEngine = "CarToolEngine";
     public static string CarToolSuspension = "CarToolSuspension";
@@ -66,11 +68,22 @@ public static class DataGame
         }
         return PlayerPrefs.GetInt(Key);
     }
+    public static float GetF(string Key)
+    {
+        if (!PlayerPrefs.HasKey(Key))
+        {
+            PlayerPrefs.GetFloat(Key, 0);
+        }
+        return PlayerPrefs.GetFloat(Key);
+    }
     public static void Set(string Key, int value)
     {
         PlayerPrefs.SetInt(Key, value);
     }
-
+    public static void SetF(string Key, float value)
+    {
+        PlayerPrefs.SetFloat(Key, value);
+    }
     public static void SetMode(int value)
     {
         PlayerPrefs.SetInt(ModeMultilPlayer, value);

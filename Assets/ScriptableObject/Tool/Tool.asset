@@ -10,25 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 462e135ab9f4e174d84c1311b4e5040d, type: 3}
-  m_Name: Tire
+  m_Name: Tool
   m_EditorClassIdentifier: 
-  nameTune: 2
-  Coin: 64000000c80000002c01000090010000f401000058020000bc020000bc020000bc020000bc020000
+  nameTune: 0
+  Coin: 
   Fricion: 
   DownForce: 
   Engine: 
   Suspension: 
   Tire:
-  - 0.5
-  - 0.1
-  - 0.05
-  - 0.05
-  - 0.05
-  - 0.05
-  - 0.05
-  - 0.05
-  - 0.05
-  - 0.05
+  - 456
   tmp: 0
-  content: Lower weight point and improved shock absorption improves stability at
-    high speeds and makes the car more stable on bumps.
+  content: 

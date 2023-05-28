@@ -156,7 +156,8 @@ public class GameController : MonoBehaviour
         DataGame.SetCoin(Coin);
         DataGame.SetGen(Gen);
         DataGame.Save();
-       
+        StopAllCoroutines();
+
     }
     public void OnDisable()
     {
@@ -164,6 +165,5 @@ public class GameController : MonoBehaviour
 
     }
 
-
-
+ 
 }

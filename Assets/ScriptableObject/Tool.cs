@@ -12,6 +12,7 @@ public class Tool :ScriptableObject
     public List<int> DownForce;
     public List<int> Engine;
     public List<int> Suspension;
-    public List<int> Tire;
+    public List<float> Tire;
+    public float tmp;
     public string content;
 }

@@ -30,7 +30,7 @@ public class CarController : NetworkBehaviour
         ForceTire = new Vector2(speed, 0);
         friction = DataGame.Get(DataGame.CarToolTire + DataGame.GetCar());
         if (friction == 0) friction = 1;
-        suspension = DataGame.Get(DataGame.CarToolSuspension + DataGame.GetCar());
+        suspension = DataGame.GetF(DataGame.CarToolSuspension + DataGame.GetCar());
         if (suspension == 0) suspension = 3;
         ChangeFriction();
         var wheelJoint2D = GetComponents<WheelJoint2D>();
@@ -292,7 +292,7 @@ public class CarController : NetworkBehaviour
     }
     private void OnDestroy()
     {
-        
+        StopAllCoroutines();
      
     }
 }

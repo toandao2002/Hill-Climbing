@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using DG.Tweening;
 
 public class UpgratePopUp : BasePopUp
 {
@@ -15,7 +16,7 @@ public class UpgratePopUp : BasePopUp
     // Start is called before the first frame update
     void Start()
     {
-        Close.onClick.AddListener(Hide);
+        Close.onClick.AddListener(_hide);
         upgrate.onClick.AddListener(Upgrate);
     }
     public void SetData(Tool tool)
@@ -68,6 +69,10 @@ public class UpgratePopUp : BasePopUp
         {
             handleUpgrateDownForce();
         }
+        _hide();
+
+
+
     }
     void handleUpgrateEngine()
     {
@@ -77,7 +82,7 @@ public class UpgratePopUp : BasePopUp
     }
     void handleUpgrateTire()
     {
-        DataGame.Set(DataGame.CarToolTire + DataGame.GetCar(), DataGame.Get(DataGame.CarToolTire+ DataGame.GetCar()) + _tool.Tire[id]);
+        DataGame.SetF(DataGame.CarToolTire + DataGame.GetCar(), DataGame.GetF(DataGame.CarToolTire+ DataGame.GetCar()) + _tool.Tire[id]);
     }
     void handleUpgrateSuspension()
     {
@@ -86,5 +91,21 @@ public class UpgratePopUp : BasePopUp
     void handleUpgrateDownForce()
     {
         DataGame.Set(DataGame.CarToolDownForce + DataGame.GetCar(), DataGame.Get(DataGame.CarToolDownForce+ DataGame.GetCar()) + _tool.DownForce[id]);
+    }
+    public void _hide()
+    {
+       
+        Main.transform.DOScale(0, 0.2f).From(1).SetEase(Ease.InOutSine).OnComplete(()=> { 
+             Main.SetActive(false);
+        });
+       
+    }
+    public void _show()
+    {
+        Main.SetActive(true);
+        Main.transform.DOScale(1,0.2f).From(0).SetEase(Ease.InOutSine).OnComplete(() => {
+
+        });
+        
     }
 }

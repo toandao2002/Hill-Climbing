@@ -44,7 +44,7 @@ public class BoxUpgrate : MonoBehaviour
     }
     public void ShowPopUpgrate()
     {
-        ManagePopUp.Instance.upgratePopUp.Show();
+        ManagePopUp.Instance.upgratePopUp._show();
         ManagePopUp.Instance.upgratePopUp.SetData(tool);
     }
     

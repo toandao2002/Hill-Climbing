@@ -12,7 +12,7 @@ public class Tank : CarController
         int speed = DataGame.Get(DataGame.CarToolEngine + DataGame.GetCar());
         if (speed == 0) speed = 1000;
         ForceTire = new Vector2(speed, 0);
-        friction = DataGame.Get(DataGame.CarToolTire + DataGame.GetCar());
+        friction = DataGame.GetF(DataGame.CarToolTire + DataGame.GetCar());
         if (friction == 0) friction = 1;
         for (int i = 0; i< chaintrack.transform.childCount; i++)
         {
@@ -20,8 +20,8 @@ public class Tank : CarController
             chain.GetComponent<Rigidbody2D>().sharedMaterial.friction = friction;
             chain.GetComponent<Rigidbody2D>().sharedMaterial = chain.GetComponent<Rigidbody2D>().sharedMaterial;
         }
-       
-       
+        ForceTorque = -20000- DataGame.Get(DataGame.CarToolDownForce + DataGame.GetCar());
+
         foreach ( var i in GetComponents<WheelJoint2D>())
         {
             Wheels.Add(i);
