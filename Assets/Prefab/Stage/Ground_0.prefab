@@ -90,8 +90,8 @@ SpriteShapeRenderer:
   - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
   - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
   m_LocalAABB:
-    m_Center: {x: 10.135095, y: 1.6734447, z: 0}
-    m_Extent: {x: 24.031458, y: 4.524132, z: 0}
+    m_Center: {x: 8.675713, y: -4.7332754, z: 0}
+    m_Extent: {x: 25.49084, y: 10.930851, z: 0}
 --- !u!114 &3987008270166650661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Spline:
     m_IsOpenEnded: 0
     m_ControlPoints:
-    - position: {x: -13.696953, y: -2.850687, z: 0}
+    - position: {x: -16.815128, y: -14.967021, z: 0}
       leftTangent: {x: 0, y: 0, z: 0}
       rightTangent: {x: 0, y: 0, z: 0}
       mode: 0
@@ -187,7 +187,7 @@ MonoBehaviour:
       spriteIndex: 0
       corner: 1
       m_CornerMode: 1
-    - position: {x: 33.78805, y: -1.7659788, z: 0}
+    - position: {x: 34.144413, y: -15.664126, z: 0}
       leftTangent: {x: 0, y: 0, z: 0}
       rightTangent: {x: 0, y: 0, z: 0}
       mode: 0
@@ -197,7 +197,7 @@ MonoBehaviour:
       spriteIndex: 0
       corner: 1
       m_CornerMode: 1
-    - position: {x: 2.2126732, y: -2.6380177, z: 0}
+    - position: {x: 1.9454012, y: -15.110715, z: 0}
       leftTangent: {x: 0, y: 0, z: 0}
       rightTangent: {x: 0, y: 0, z: 0}
       mode: 0
@@ -232,14 +232,14 @@ EdgeCollider2D:
   m_GameObject: {fileID: 3987008270166650663}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: c749111e01c4a2548a983992a3e2c78b, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -13.696953, y: -2.850687}
+  - {x: -16.815128, y: -14.967021}
   - {x: -13.888087, y: 2.0452287}
   - {x: -12.474383, y: 1.9775093}
   - {x: -10.95207, y: 1.9140558}
@@ -313,11 +313,11 @@ EdgeCollider2D:
   - {x: 32.65472, y: 5.8169117}
   - {x: 33.388412, y: 5.9378057}
   - {x: 34.148235, y: 6.03863}
-  - {x: 33.78805, y: -1.7659788}
-  - {x: 2.2126732, y: -2.6380177}
-  - {x: -12.923862, y: -2.840353}
-  - {x: -13.494252, y: -2.8479776}
-  - {x: -13.696953, y: -2.850687}
+  - {x: 34.144413, y: -15.664126}
+  - {x: 1.9454012, y: -15.110715}
+  - {x: -15.903505, y: -14.974003}
+  - {x: -16.576105, y: -14.968851}
+  - {x: -16.815128, y: -14.967021}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0

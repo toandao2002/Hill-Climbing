@@ -14,6 +14,7 @@ public class PausedPopUp : MonoBehaviour
             ManagePopUp.Instance.HidePaused();
         });
         Restart.onClick.AddListener(()=> {
+            GameController.instance.StopCorotine();
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         });
         Exit.onClick.AddListener(()=> {

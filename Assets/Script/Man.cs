@@ -30,6 +30,7 @@ public class Man : MonoBehaviour
             {
                 return;
             }
+            GameController.instance.GameLose = true;
             DOVirtual.DelayedCall(3, () => {
                 if((carController.CheckIsOwner()|| !GameController.instance.ModeGameOnline))
                     MyEvent.GameLose?.Invoke();

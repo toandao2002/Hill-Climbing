@@ -145,6 +145,7 @@ GameObject:
   - component: {fileID: 9120108360402071814}
   - component: {fileID: 9120108360402071813}
   - component: {fileID: 9120108360402071819}
+  - component: {fileID: 4525266553459606557}
   m_Layer: 0
   m_Name: BackTire
   m_TagString: Untagged
@@ -163,8 +164,7 @@ Transform:
   m_LocalPosition: {x: -0.66, y: -0.302, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 5943135288879682989}
+  m_Children: []
   m_Father: {fileID: 9120108360940005104}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -257,6 +257,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.32
+--- !u!114 &4525266553459606557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9120108360402071817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a76ae446d6223f498aa7225c2b904e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9120108360886788302
 GameObject:
   m_ObjectHideFlags: 0
@@ -327,6 +339,7 @@ Transform:
   m_Children:
   - {fileID: 9120108360402071818}
   - {fileID: 9120108361352622289}
+  - {fileID: 5943135288879682989}
   - {fileID: 9120108361219489801}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -432,6 +445,7 @@ MonoBehaviour:
   suspension: 0
   TimeDelay: 0.02
   forceMode2D: 0
+  velocity_tor: {x: 0, y: 0}
 --- !u!235 &9120108360940005107
 WheelJoint2D:
   m_ObjectHideFlags: 0
@@ -576,7 +590,7 @@ Transform:
   - {fileID: 9120108360379074887}
   - {fileID: 9120108360886788303}
   m_Father: {fileID: 9120108360940005104}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &9120108361219489803
 Rigidbody2D:
@@ -954,23 +968,27 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 9120108360402071818}
+    m_TransformParent: {fileID: 9120108360940005104}
     m_Modifications:
+    - target: {fileID: 33760574938300755, guid: 1c7edaae84b39ca45965d453b98d3217, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 9120108360402071817}
     - target: {fileID: 5943135288517627843, guid: 1c7edaae84b39ca45965d453b98d3217, type: 3}
       propertyPath: m_Name
       value: Particle System Gas
       objectReference: {fileID: 0}
     - target: {fileID: 5943135288517627870, guid: 1c7edaae84b39ca45965d453b98d3217, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5943135288517627870, guid: 1c7edaae84b39ca45965d453b98d3217, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.18000013
+      value: -0.658
       objectReference: {fileID: 0}
     - target: {fileID: 5943135288517627870, guid: 1c7edaae84b39ca45965d453b98d3217, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.22799999
+      value: -0.319
       objectReference: {fileID: 0}
     - target: {fileID: 5943135288517627870, guid: 1c7edaae84b39ca45965d453b98d3217, type: 3}
       propertyPath: m_LocalPosition.z

@@ -40,7 +40,7 @@ public class Tank : CarController
                 RPM.instacne.Zr = Mathf.Abs(BackTire.angularVelocity);
                 if (Fuel <= 0)
                 {
-                    fx.gameObject.SetActive(false);
+                    
 
                 }
                 else if (_brake)
@@ -52,8 +52,7 @@ public class Tank : CarController
                     AddForceTorque(BackTire, ForceTire);*/
                     move(ForceTire.x);
                     Rig.AddTorque(-TimeDelay * ForceTorque, forceMode2D);
-                    fx.gameObject.SetActive(true);
-                    fx.transform.rotation = Quaternion.EulerAngles(0, -30, 0);
+                
 
                 }
                 else
@@ -71,13 +70,10 @@ public class Tank : CarController
                         AddForceTorque(BackTire, -ForceTire);*/
                         move(-ForceTire.x);
                         Rig.AddTorque(TimeDelay * ForceTorque, forceMode2D);
-                        fx.gameObject.SetActive(true);
-                        fx.transform.rotation = Quaternion.EulerAngles(0, 30, 0);
-
+                        
                     }
                     else
                     {
-                        fx.gameObject.SetActive(false);
                         
                     }
                 }
@@ -110,6 +106,7 @@ public class Tank : CarController
             i.motor = tmp;
         }
     }
+   
     void useMoto(bool b)
     {
         foreach (var i in Wheels)
@@ -123,13 +120,14 @@ public class Tank : CarController
         ManangeAudio.Instacne.PlaySound(NameSound.StartRun);
         ManangeAudio.Instacne.LoopAudio(NameSound.CarRun, 1);
         useMoto(true);
-
+        EffectGround(-30, true);
     }
     public override void ReleaseGas()
     {
         _gas = false;
         useMoto(false);
         ManangeAudio.Instacne.LoopAudio(NameSound.CarIdle, 1);
+        EffectGround(-30, false);
     }
 
     public override void Brake()
@@ -138,11 +136,13 @@ public class Tank : CarController
         ManangeAudio.Instacne.PlaySound(NameSound.StartRun);
         ManangeAudio.Instacne.LoopAudio(NameSound.CarRun, 1);
         _brake = true;
+        EffectGround(-120, true);
     }
     public override void  ReleaseBrake()
     {
         useMoto(false);
         ManangeAudio.Instacne.LoopAudio(NameSound.CarIdle, 1);
         _brake = false;
+        EffectGround(-120, false);
     }
 }

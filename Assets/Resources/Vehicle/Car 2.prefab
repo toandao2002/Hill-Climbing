@@ -263,7 +263,7 @@ Transform:
   - {fileID: 5447554981413483998}
   - {fileID: 6509534057839748575}
   m_Father: {fileID: 5447554981468271585}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &5447554981215048986
 Rigidbody2D:
@@ -482,6 +482,7 @@ Transform:
   m_Children:
   - {fileID: 5447554982006006811}
   - {fileID: 5447554980805043648}
+  - {fileID: 589057523318116913}
   - {fileID: 5447554981215048984}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -577,16 +578,17 @@ MonoBehaviour:
   ForceTire: {x: 0, y: 0}
   _gas: 0
   _brake: 0
-  ForceTorque: 200
+  ForceTorque: 1000
   Rig: {fileID: 0}
   Fuel: 1
-  TwoEngine: 1
+  TwoEngine: 0
   Lose: 0
   fx: {fileID: 589057523318116910}
   friction: 0
   suspension: 0
   TimeDelay: 0.02
   forceMode2D: 0
+  velocity_tor: {x: 0, y: 0}
 --- !u!235 &5447554981468271586
 WheelJoint2D:
   m_ObjectHideFlags: 0
@@ -705,6 +707,7 @@ GameObject:
   - component: {fileID: 5447554982006006807}
   - component: {fileID: 5447554982006006804}
   - component: {fileID: 5447554982006006810}
+  - component: {fileID: 5543464855393070380}
   m_Layer: 0
   m_Name: BackTire
   m_TagString: Untagged
@@ -723,8 +726,7 @@ Transform:
   m_LocalPosition: {x: -0.78, y: -0.18, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 589057523318116913}
+  m_Children: []
   m_Father: {fileID: 5447554981468271585}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -817,6 +819,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.32
+--- !u!114 &5543464855393070380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5447554982006006808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a76ae446d6223f498aa7225c2b904e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5447554982045965399
 GameObject:
   m_ObjectHideFlags: 0
@@ -1292,47 +1306,27 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 5447554982006006811}
+    m_TransformParent: {fileID: 5447554981468271585}
     m_Modifications:
-    - target: {fileID: 5943135288517627841, guid: 1c7edaae84b39ca45965d453b98d3217, type: 3}
-      propertyPath: moveWithTransform
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5943135288517627841, guid: 1c7edaae84b39ca45965d453b98d3217, type: 3}
-      propertyPath: ShapeModule.m_Rotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5943135288517627841, guid: 1c7edaae84b39ca45965d453b98d3217, type: 3}
-      propertyPath: InitialModule.startSpeed.scalar
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5943135288517627841, guid: 1c7edaae84b39ca45965d453b98d3217, type: 3}
-      propertyPath: EmissionModule.rateOverTime.scalar
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 5943135288517627841, guid: 1c7edaae84b39ca45965d453b98d3217, type: 3}
-      propertyPath: InitialModule.gravityModifier.scalar
-      value: 0.5
-      objectReference: {fileID: 0}
+    - target: {fileID: 33760574938300755, guid: 1c7edaae84b39ca45965d453b98d3217, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 5447554982006006808}
     - target: {fileID: 5943135288517627843, guid: 1c7edaae84b39ca45965d453b98d3217, type: 3}
       propertyPath: m_Name
       value: Particle System Gas
       objectReference: {fileID: 0}
-    - target: {fileID: 5943135288517627843, guid: 1c7edaae84b39ca45965d453b98d3217, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5943135288517627870, guid: 1c7edaae84b39ca45965d453b98d3217, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5943135288517627870, guid: 1c7edaae84b39ca45965d453b98d3217, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.08100009
+      value: -0.7880001
       objectReference: {fileID: 0}
     - target: {fileID: 5943135288517627870, guid: 1c7edaae84b39ca45965d453b98d3217, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.27799994
+      value: -0.19599998
       objectReference: {fileID: 0}
     - target: {fileID: 5943135288517627870, guid: 1c7edaae84b39ca45965d453b98d3217, type: 3}
       propertyPath: m_LocalPosition.z

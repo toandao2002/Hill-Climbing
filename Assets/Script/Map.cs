@@ -20,13 +20,13 @@ public class Map : MonoBehaviour
         spr.spline.SetTangentMode(1, ShapeTangentMode.Continuous);
         for (int i = 2; i<100; i++)
         {
-            posX +=  Random.Range(7, 14);
+            posX +=  Random.Range(3, 5);
             spr.spline.InsertPointAt(i,new Vector3(posX , Random.Range(3,7), 0));
             var v = spr.spline.GetPosition(i) - spr.spline.GetPosition(i - 1);
             float deg = Vector3.Angle(v, Vector3.right);
             if (v.y < 0) deg = -deg;
            
-            if (_ramdom(0.6f))
+            if (_ramdom(0.1f))
             {
                 
                 var _item = Instantiate(itemPref[Random.Range(0, 2)], parItem.transform);
@@ -49,7 +49,7 @@ public class Map : MonoBehaviour
     }
     public bool  _ramdom(float v)
     {
-        return Random.Range(0f, 1f) >= v;
+        return Random.Range(0f, 1f) <= v;
        
     }
     // Update is called once per frame
@@ -58,3 +58,4 @@ public class Map : MonoBehaviour
         
     }
 }
+

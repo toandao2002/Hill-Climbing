@@ -87,18 +87,22 @@ public class GameController : MonoBehaviour
         car.transform.position = PosFirstCar.position;
         MyCamera.Instance.SetTarGet(car);
     }
+    bool captured=false;
     // Start is called before the first frame update
     public void Game_Lose()
     {
-        if (!GameLose)
+        if (!captured)
         {
-            GameLose = true;
+            captured = true;
             StartCoroutine(CaptureImage());
         }
         
         
     }
-   
+    public void StopCorotine()
+    {
+        StopAllCoroutines();
+    }
     bool Finished = false;
     IEnumerator CaptureImage()
     {

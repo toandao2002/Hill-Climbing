@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
@@ -21,20 +21,25 @@ public class CarController : NetworkBehaviour
     NetworkObject networkObject;
     public float friction;
     public float suspension;
+
+ 
     // Start is called before the first frame update
     public  void Start()
     {
+        BackTire.GetComponent<Tire>().IsOwner = IsOwner || !GameController.instance.ModeGameOnline;
         Rig = GetComponent<Rigidbody2D>();
         int speed = DataGame.Get(DataGame.CarToolEngine + DataGame.GetCar());
-        if (speed == 0) speed = 1000;
+        if (speed == 0) speed = 1200;
+        
         ForceTire = new Vector2(speed, 0);
-        friction = DataGame.Get(DataGame.CarToolTire + DataGame.GetCar());
+        friction = DataGame.GetF(DataGame.CarToolTire + DataGame.GetCar());
         if (friction == 0) friction = 1;
-        suspension = DataGame.GetF(DataGame.CarToolSuspension + DataGame.GetCar());
+        suspension = DataGame.Get(DataGame.CarToolSuspension + DataGame.GetCar());
         if (suspension == 0) suspension = 3;
         ChangeFriction();
         var wheelJoint2D = GetComponents<WheelJoint2D>();
         ForceTorque -= DataGame.Get(DataGame.CarToolDownForce + DataGame.GetCar());
+        
         
         foreach (WheelJoint2D i in wheelJoint2D)
         {
@@ -43,6 +48,12 @@ public class CarController : NetworkBehaviour
             temp.frequency = suspension;
             i.suspension = temp;
         }
+
+        if (DataGame.Get(DataGame.Stage)== 2)
+        {
+            gravity(-2f);
+        }
+
         int layer =6;
      /*   for (int i = 6;i <=10; i++)
         {
@@ -53,9 +64,13 @@ public class CarController : NetworkBehaviour
                 break;
             }
         }*/
-       
+        
         ChangeChildrenLayer(gameObject, layer);
         gameObject.layer = layer;
+    }
+    public void gravity(float val)
+    {
+        Rig.gravityScale = val;
     }
     private void ChangeChildrenLayer(GameObject parent, int layer)
     {
@@ -108,6 +123,40 @@ public class CarController : NetworkBehaviour
     {
         
     }
+    int deg = 0;
+
+    void Update()
+    {
+        if (!(IsOwner || !GameController.instance.ModeGameOnline)) return;
+        if ( deg ==0 && transform.localRotation.eulerAngles.z >=90 && transform.localRotation.eulerAngles.z <= 180)
+        {
+            deg++;
+        }
+        else if ( deg ==1 && transform.localRotation.eulerAngles.z >= 180 && transform.localRotation.eulerAngles.z <= 270)
+        {
+            deg++;
+        }
+        else if (deg == 2 && transform.localRotation.eulerAngles.z >= 270)
+        {
+            deg++;
+        }
+        else  if ( transform.localRotation.eulerAngles.z >= 350)
+        {
+            if (deg == 3)
+            {
+               
+                showTextTurn();
+            }
+            deg = 0;
+        }
+
+    }
+    public void showTextTurn()
+    {
+        BackFlip.instance.ShowBackFlip();
+        ManangeAudio.Instacne.PlaySound(NameSound.Coin);
+        MyEvent.IncCoin?.Invoke(200);
+    }
     public void GameLose()
     {
         if (!IsOwner && GameController.instance.ModeGameOnline) return;                          
@@ -120,12 +169,13 @@ public class CarController : NetworkBehaviour
         _gas = true;
         ManangeAudio.Instacne.PlaySound(NameSound.StartRun);
         ManangeAudio.Instacne.LoopAudio(NameSound.CarRun, 1);
-        
+        EffectGround(-30, true);
     }
     public virtual void ReleaseGas()
     {
         _gas = false;
         ManangeAudio.Instacne.LoopAudio(NameSound.CarIdle, 1);
+        EffectGround(-30, false);
     }
     
     public  virtual void Brake()
@@ -133,11 +183,13 @@ public class CarController : NetworkBehaviour
         ManangeAudio.Instacne.PlaySound(NameSound.StartRun);
         ManangeAudio.Instacne.LoopAudio(NameSound.CarRun, 1);
         _brake = true;
+        EffectGround(-120, true);
     }
     public virtual void ReleaseBrake()
     {
         ManangeAudio.Instacne.LoopAudio(NameSound.CarIdle, 1);
         _brake = false;
+        EffectGround(-120, false);
     }
     public float TimeDelay = 0.02f;
     public ForceMode2D forceMode2D;
@@ -166,8 +218,7 @@ public class CarController : NetworkBehaviour
                     //BackTire.AddTorque(TimeDelay * ForceTire , forceMode2D);
                     AddForceTorque(BackTire, ForceTire);
                     Rig.AddTorque(-TimeDelay * ForceTorque , forceMode2D);
-                    fx.gameObject.SetActive(true);
-                    fx.transform.rotation =  Quaternion.EulerAngles(0, -30, 0);
+                
 
                 }
                 else
@@ -184,15 +235,10 @@ public class CarController : NetworkBehaviour
                         //BackTire.AddTorque(TimeDelay * ForceTire , forceMode2D);
                         AddForceTorque(BackTire, -ForceTire);
                         Rig.AddTorque(TimeDelay * ForceTorque, forceMode2D);
-                        fx.gameObject.SetActive(true);
-                        fx.transform.rotation = Quaternion.EulerAngles(0, 30, 0);
+                      
 
                     }
-                    else
-                    {
-                        fx.gameObject.SetActive(false);
-
-                    }
+                    
                 }
                 
 
@@ -203,6 +249,15 @@ public class CarController : NetworkBehaviour
         }
 
     }
+  
+    public void EffectGround(int deg, bool val)
+    {
+        //fx.gameObject.SetActive(val);
+        fx.loop = val;
+        if(val) fx.Play();
+        fx.transform.localRotation = Quaternion.Euler(  deg,-90,90 );
+    }
+
     public Vector2 velocity_tor;
     void AddForceTorque(Rigidbody2D obj_rig, Vector2 target)
     {

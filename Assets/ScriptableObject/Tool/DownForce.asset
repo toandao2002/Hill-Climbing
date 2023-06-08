@@ -15,9 +15,10 @@ MonoBehaviour:
   nameTune: 3
   Coin: 64000000c80000002c01000090010000f401000058020000bc0200002003000084030000e8030000
   Fricion: 
-  DownForce: 0a0000000a0000000a0000000a0000000a0000000a0000000a0000000a0000000a0000000a000000
+  DownForce: 64000000320000003200000032000000320000003200000032000000320000003200000032000000
   Engine: 
   Suspension: 
-  Tire: 
+  Tire: []
+  tmp: 0
   content: Lower weight point and improved shock absorption improves stability at
     high speeds and makes the car more stable on bumps.

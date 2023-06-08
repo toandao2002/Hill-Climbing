@@ -54,7 +54,7 @@ GameObject:
   - component: {fileID: 8049793911033001016}
   m_Layer: 0
   m_Name: Segment1
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -186,7 +186,7 @@ GameObject:
   - component: {fileID: 4921903014865158421}
   m_Layer: 0
   m_Name: Rope (1)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: -5938655980376293919, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -344,7 +344,7 @@ GameObject:
   - component: {fileID: 4555748830785394028}
   m_Layer: 0
   m_Name: Rope (5)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: -5938655980376293919, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -502,7 +502,7 @@ GameObject:
   - component: {fileID: 8301919639088460583}
   m_Layer: 0
   m_Name: Rope (4)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: -5938655980376293919, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -660,7 +660,7 @@ GameObject:
   - component: {fileID: 1389979065603782252}
   m_Layer: 0
   m_Name: Rope
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: -5938655980376293919, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -818,7 +818,7 @@ GameObject:
   - component: {fileID: 5807885797787356339}
   m_Layer: 0
   m_Name: Rope (3)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: -5938655980376293919, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -976,7 +976,7 @@ GameObject:
   - component: {fileID: 6455330236111134075}
   m_Layer: 0
   m_Name: Rope (6)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: -5938655980376293919, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1133,7 +1133,7 @@ GameObject:
   - component: {fileID: 8049793912395736122}
   m_Layer: 0
   m_Name: Segment12
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1265,7 +1265,7 @@ GameObject:
   - component: {fileID: 3560784905208515286}
   m_Layer: 0
   m_Name: Rope (2)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: -5938655980376293919, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1614,6 +1614,4 @@ MonoBehaviour:
   - {fileID: 8049793911793432532}
   - {fileID: 8049793912366612328}
   - {fileID: 8049793912395736123}
-  posEdge: []
   line: {fileID: 8049793912555373439}
-  edge: {fileID: 0}
